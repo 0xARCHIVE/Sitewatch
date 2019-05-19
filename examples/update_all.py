@@ -9,7 +9,7 @@ from sitewatch.db import MysqlHandler
 
 def check_all_for_updates():
     """Example - use Sitewatch client to check all sites for updates"""
-    mysql = MysqlHandler(host='host', port=123, user='user', pwd='pwd')
+    mysql = MysqlHandler(host='host', port=123, user='user', pwd='pwd', dbname='sitewatch')
     client = SitewatchClient(db_handler=mysql)
 
     # check all sites for updates & automatically send out Slack notifications
