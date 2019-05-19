@@ -24,7 +24,6 @@ setup(
     license='GPLv3',
     author_email='texruska@users.noreply.github.com',
     packages=['sitewatch',
-              'sitewatch.common',
               'sitewatch.db'
              ],
     setup_requires=['pytest-runner'],
