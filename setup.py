@@ -23,7 +23,10 @@ setup(
     author='Steven Burnett',
     license='GPLv3',
     author_email='texruska@users.noreply.github.com',
-    packages=['sitewatch'],
+    packages=['sitewatch',
+              'sitewatch.common'
+              'sitewatch.db'
+             ],
     setup_requires=['pytest-runner'],
     tests_require=[
         'coverage',
