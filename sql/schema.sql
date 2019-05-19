@@ -10,8 +10,7 @@ CREATE TABLE `sites` (
 
 CREATE TABLE `slack` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `channel` tinytext NOT NULL,
-  `token` tinytext NOT NULL,
+  `webhookURL` tinytext NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
