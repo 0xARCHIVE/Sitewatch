@@ -30,7 +30,7 @@ class TestSendMessage(unittest.TestCase):
 
     @patch('requests.post')
     @patch('sitewatch.slack._build_request')
-    def test_send_message(self, mock_build_req, mock_post) -> None:
+    def test_send_message(self, mock_build_req, mock_post) -> None: # pylint: disable=no-self-use
         """Test send message valid input"""
         webhook_url = 'https://www.example.com'
         message = 'test'
