@@ -41,5 +41,6 @@ class TestSendMessage(unittest.TestCase):
         mock_post.assert_called_with(webhook_url, json=json_data)
 
     def test_send_message_bad(self) -> None:
+        """Test send message bad input"""
         with self.assertRaises(TypeError):
-            send_request(1, 'test')
+            send_message(1, 'test')
