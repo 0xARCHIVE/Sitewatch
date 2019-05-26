@@ -3,6 +3,7 @@
 """
 Tests for structs:
 SiteInfo
+SlackInfo
 """
 
 import unittest

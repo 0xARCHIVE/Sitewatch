@@ -2,7 +2,8 @@
 
 """
 Structs:
-Site
+SiteInfo
+SlackInfo
 """
 
 from typing import Optional
