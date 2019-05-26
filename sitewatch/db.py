@@ -7,7 +7,7 @@ DB handlers
 from typing import List
 from sqlalchemy import create_engine
 
-from sitewatch.structs import SiteInfo
+from sitewatch.structs import SiteInfo, SlackInfo
 
 class BaseDbHandler:
     """Base DB handler (abstract)"""
@@ -17,6 +17,10 @@ class BaseDbHandler:
 
     def store_sites(self, sites: List[SiteInfo]) -> None:
         """Store list of SiteInfo structs"""
+        raise NotImplementedError
+
+    def get_slackinfo(self, site: SiteInfo) -> List[SlackInfo]:
+        """Return list of SlackInfo structs for a site"""
         raise NotImplementedError
 
 class MysqlHandler(BaseDbHandler):
@@ -30,6 +34,10 @@ class MysqlHandler(BaseDbHandler):
 
     def store_sites(self, sites: List[SiteInfo]) -> None:
         """Store list of SiteInfo structs"""
+        raise NotImplementedError
+
+    def get_slackinfo(self, site: SiteInfo) -> List[SlackInfo]:
+        """Return list of SlackInfo structs for a site"""
         raise NotImplementedError
 
 """
