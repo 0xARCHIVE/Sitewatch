@@ -16,3 +16,10 @@ class SiteInfo:
     tag_id: Optional[str]
     hash: Optional[str]
     timestamp: int
+
+@dataclass
+class SlackInfo:
+    """Slack struct"""
+    _id: int
+    webhook_url: str
+    site_id: int
