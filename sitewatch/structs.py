@@ -6,21 +6,21 @@ SiteInfo
 SlackInfo
 """
 
+import time
 from typing import Optional
 from dataclasses import dataclass
 
 @dataclass
 class SiteInfo:
     """Site struct"""
-    _id: int
     url: str
-    tag_id: Optional[str]
-    hash: Optional[str]
-    timestamp: int
+    id: Optional[int] = None # pylint: disable=invalid-name
+    tag_id: Optional[str] = None
+    hash: Optional[str] = None
+    timestamp: int = int(time.time())
 
 @dataclass
 class SlackInfo:
     """Slack struct"""
-    _id: int
     webhook_url: str
-    site_id: int
+    id: Optional[int] = None # pylint: disable=invalid-name

@@ -1,3 +1,7 @@
+SET NAMES utf8;
+SET time_zone = '+00:00';
+
+DROP TABLE IF EXISTS `sites`;
 CREATE TABLE `sites` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `URL` tinytext NOT NULL,
@@ -8,6 +12,7 @@ CREATE TABLE `sites` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `slack`;
 CREATE TABLE `slack` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `webhookURL` tinytext NOT NULL,
@@ -16,6 +21,7 @@ CREATE TABLE `slack` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+DROP TABLE IF EXISTS `slack-sites-link`;
 CREATE TABLE `slack-sites-link` (
   `siteID` int(11) NOT NULL,
   `slackID` int(11) NOT NULL,

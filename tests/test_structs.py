@@ -14,7 +14,7 @@ class TestSiteInfoStruct(unittest.TestCase):
     """Test SiteInfo struct"""
     def test_create(self) -> None:
         """Create - correct usage"""
-        test_siteinfo = SiteInfo(1, 'test', 'test', 'test', 1)
+        test_siteinfo = SiteInfo(id=1, url='test', tag_id='test', hash='test', timestamp=1)
         self.assertTrue(isinstance(test_siteinfo, SiteInfo))
 
     def test_create_missing_args(self) -> None:
@@ -22,11 +22,16 @@ class TestSiteInfoStruct(unittest.TestCase):
         with self.assertRaises(TypeError):
             SiteInfo()
 
+    def test_create_optional(self) -> None:
+        """Create - missing optional args"""
+        test_siteinfo = SiteInfo(url='test.com')
+        self.assertTrue(isinstance(test_siteinfo, SiteInfo))
+
 class TestSlackInfoStruct(unittest.TestCase):
     """Test SlackInfo struct"""
     def test_create(self) -> None:
         """Create - correct usage"""
-        test_slackinfo = SlackInfo(1, 'test', 1)
+        test_slackinfo = SlackInfo(1, 'test')
         self.assertTrue(isinstance(test_slackinfo, SlackInfo))
 
     def test_create_missing_args(self) -> None:
