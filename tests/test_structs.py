@@ -31,7 +31,7 @@ class TestSlackInfoStruct(unittest.TestCase):
     """Test SlackInfo struct"""
     def test_create(self) -> None:
         """Create - correct usage"""
-        test_slackinfo = SlackInfo(1, 'test')
+        test_slackinfo = SlackInfo(id=1, webhook_url='test')
         self.assertTrue(isinstance(test_slackinfo, SlackInfo))
 
     def test_create_missing_args(self) -> None:
