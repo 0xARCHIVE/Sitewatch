@@ -16,33 +16,6 @@ from sitewatch.structs import SiteInfo, SlackInfo
 
 Base = declarative_base() # pylint: disable=invalid-name
 
-class MysqlHandler(BaseDbHandler):
-    """MySQL DB handler"""
-    def __init__(self, host: str, port: int, user: str, pwd: str, dbname: str):
-        self.engine = create_engine(f'mysql+pymysql://{user}:{pwd}@{host}:{port}/{dbname}')
-        session_maker = sessionmaker(bind=self.engine)
-        self.session = session_maker()
-
-        Base.metadata.create_all(self.engine)
-
-    def get_sites(self) -> List[SiteInfo]:
-        """Return list of SiteInfo structs"""
-# get Sites from db session
-# convert Site to SiteInfo
-        raise NotImplementedError
-
-    def store_sites(self, sites: List[SiteInfo]) -> None:
-        """Store list of SiteInfo structs"""
-# convert SiteInfo to Site
-# store Site using db session
-        raise NotImplementedError
-
-    def get_slackinfo(self, site: SiteInfo) -> List[SlackInfo]:
-        """Return list of SlackInfo structs for a site"""
-# get Slacks from db session
-# convert Slack to SlackInfo
-        raise NotImplementedError
-
 class Site(Base): # pylint: disable=too-few-public-methods
     """Site table"""
     __tablename__ = 'site'
@@ -80,3 +53,30 @@ def create_siteinfo_from_site(site: Site) -> SiteInfo:
 def create_slackinfo_from_slack(slack: Slack) -> SlackInfo:
     """Create SlackInfo from Slack object (SqlAlchemy)"""
     return SlackInfo(id=slack.id, webhook_url=slack.webhook_url)
+
+class MysqlHandler(BaseDbHandler):
+    """MySQL DB handler"""
+    def __init__(self, host: str, port: int, user: str, pwd: str, dbname: str):
+        self.engine = create_engine(f'mysql+pymysql://{user}:{pwd}@{host}:{port}/{dbname}')
+        session_maker = sessionmaker(bind=self.engine)
+        self.session = session_maker()
+
+        Base.metadata.create_all(self.engine)
+
+    def get_sites(self) -> List[SiteInfo]:
+        """Return list of SiteInfo structs"""
+        sites = self.session.query(Site).all()
+        siteinfos = [create_siteinfo_from_site(site) for site in sites]
+        return siteinfos
+
+    def store_sites(self, sites: List[SiteInfo]) -> None:
+        """Store list of SiteInfo structs"""
+# convert SiteInfo to Site
+# store Site using db session
+        raise NotImplementedError
+
+    def get_slackinfo(self, site: SiteInfo) -> List[SlackInfo]:
+        """Return list of SlackInfo structs for a site"""
+# get Slacks from db session
+# convert Slack to SlackInfo
+        raise NotImplementedError
